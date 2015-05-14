@@ -1,29 +1,43 @@
 <!DOCTYPE html>
+
+<!-- bootstrap ng-app to html tag-->
 <html ng-app="TTTapp">
 	<head>
-		<title></title>
-
+		<title>Tic Tac Toe firebaseObject</title>
+		
+		<!-- Stylesheet -->
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		
+		<!-- Javascript: angular, firebase, angularfire -->
 		<script src="js/angular.js"></script>
 		<script src="js/firebase.js"></script>
 		<script src="js/angularfire.js"></script>
 
-		<script type="text/javascript" src="js/app.js"></script>
-		<script type="text/javascript" src="js/controller.js"></script>
+		<!-- Javascript: module, controller -->
+		<script type="text/javascript" src="js/app.js" defer></script>
+		<script type="text/javascript" src="js/controller.js" defer></script>
 
 	</head>
+
+	<!-- bootstrap controller to body tag, create alias as mainCtrl-->
 	<body ng-controller="TTTController as mainCtrl">
 
+		<!-- contains cells and make them 3x3 grid -->
 		<div class="wrapper">
 
-			<div class="board {{mainCtrl.whatever.value}" ng-repeat="square in mainCtrl.game.gridlist track by $index" ng-click="mainCtrl.changeValue($index)" ng-bind="square"></div>
+			<!-- class="board" -> cells displays and performs actions : 
+				ng-repeat -> repeats the cell 9 times, 
+				ng-click -> pushes the value into firebase,
+				ng-bind -> retrieves value in firebase to display on viewer-->			
+			<div class="board {{mainCtrl.whatever.value}}" 
+				ng-repeat="square in mainCtrl.game.gridlist track by $index" 
+				ng-click="mainCtrl.changeValue($index)" 
+				ng-bind="square"
+			>
+			</div>
 
 		</div>
 
 	</body>
 </html>
 
-<!-- 			<span ng-repeat="square in mainCtrl.game.gridlist track by $index" ng-click="mainCtrl.changeValue($index)">
-				<div class="board" ng-bind="square[$index]"></div>
-			</span> -->

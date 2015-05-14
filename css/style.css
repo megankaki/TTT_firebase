@@ -13,3 +13,6 @@
 	float: left;
 
 }
+.empty {
+	background-color: red;
+}
