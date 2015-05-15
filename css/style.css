@@ -18,3 +18,10 @@
 	height: 50px;
 	border: solid black 1px;
 }
+
+.x {
+	background-image: url(images/mole.png);
+}
+.o {
+	background-image: url(images/hammer.png);
+}

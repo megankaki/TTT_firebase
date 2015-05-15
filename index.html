@@ -58,6 +58,17 @@
 			ng-show="mainCtrl.whatever.showName2"
 			value="submit"
 		>
+		<!-- buttons that allows you to open the two inputs for two names again -->
+		<input type="button" 
+			ng-click="mainCtrl.nameChange1()" 
+			ng-show="mainCtrl.whatever.showName1" 
+			value="change-name-1"
+		>
+		<input type="button" 
+			ng-click="mainCtrl.nameChange2()" 
+			ng-show="mainCtrl.whatever.showName2"
+			value="change-name-2"
+		>					
 	</div>
 
 		<!-- contains cells and make them 3x3 grid -->
@@ -70,7 +81,7 @@
 			<div class="board" 
 				ng-repeat="square in mainCtrl.whatever.gridList track by $index" 
 				ng-click="mainCtrl.changeValue($index)" 
-				ng-bind="square.value"
+				ng-class="square.value"
 			>
 			</div>
 
