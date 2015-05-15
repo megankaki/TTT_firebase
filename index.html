@@ -22,6 +22,38 @@
 	<!-- bootstrap controller to body tag, create alias as mainCtrl-->
 	<body ng-controller="TTTController as mainCtrl">
 
+	<h1 class="playerName">
+		<span ng-bind = "mainCtrl.whatever.name1"></span> VS 
+		<span ng-bind = "mainCtrl.whatever.name2"></span>
+	</h1>
+
+	<h2 class="score">
+		<span ng-bind = "mainCtrl.whatever.p1score"></span> : 
+		<span ng-bind = "mainCtrl.whatever.p2score"></span>
+	</h2>
+
+	<div "winnerDispaly">
+		<h2 ng-bind = "mainCtrl.whatever.winner"></h2>
+	</div>	
+
+	<div "nameInput">
+		<input type="text" 
+			ng-model="mainCtrl.whatever.name1"
+			ng-show="mainCtrl.whatever.showName" 
+			placeholder="Enter your name"
+		>
+		<input type="text" 
+			ng-model="mainCtrl.whatever.name2" 
+			ng-show="mainCtrl.whatever.showName"
+			placeholder="Enter your name"
+		>
+		<input type="button" 
+			ng-click="mainCtrl.nameChange()" 
+			ng-show="mainCtrl.whatever.showName"
+			value="submit"
+		>
+	</div>
+
 		<!-- contains cells and make them 3x3 grid -->
 		<div class="wrapper">
 
@@ -37,6 +69,13 @@
 			</div>
 
 		</div>
+
+
+		<input class ="clear-board-button" 
+			type="button" 
+			ng-click="mainCtrl.clearBoard()" 
+			value="Clear Board"
+		>
 
 	</body>
 </html>
