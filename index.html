@@ -26,13 +26,13 @@
 		<div class="wrapper">
 
 			<!-- class="board" -> cells displays and performs actions : 
-				ng-repeat -> repeats the cell 9 times, 
+				ng-repeat -> iterates through the cell 9 times, 
 				ng-click -> pushes the value into firebase,
 				ng-bind -> retrieves value in firebase to display on viewer-->			
-			<div class="board {{mainCtrl.whatever.value}}" 
-				ng-repeat="square in mainCtrl.game.gridlist track by $index" 
+			<div class="board" 
+				ng-repeat="square in mainCtrl.whatever.gridList track by $index" 
 				ng-click="mainCtrl.changeValue($index)" 
-				ng-bind="square"
+				ng-bind="square.value"
 			>
 			</div>
 
