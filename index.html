@@ -21,56 +21,68 @@
 
 	<!-- bootstrap controller to body tag, create alias as mainCtrl-->
 	<body ng-controller="TTTController as mainCtrl">
+		<div class="gameData">
+			<h1 class="playerName">
+				<span ng-bind = "mainCtrl.whatever.name1"></span> VS 
+				<span ng-bind = "mainCtrl.whatever.name2"></span>
+			</h1>
+		
+			<h2 class="score">
+				<span ng-bind = "mainCtrl.whatever.p1score"></span> : 
+				<span ng-bind = "mainCtrl.whatever.p2score"></span>
+			</h2>
 
-	<h1 class="playerName">
-		<span ng-bind = "mainCtrl.whatever.name1"></span> VS 
-		<span ng-bind = "mainCtrl.whatever.name2"></span>
-	</h1>
+			<div "winnerDispaly">
+				<h2 ng-bind = "mainCtrl.whatever.winner"></h2>
+			</div>	
 
-	<h2 class="score">
-		<span ng-bind = "mainCtrl.whatever.p1score"></span> : 
-		<span ng-bind = "mainCtrl.whatever.p2score"></span>
-	</h2>
 
-	<div "winnerDispaly">
-		<h2 ng-bind = "mainCtrl.whatever.winner"></h2>
-	</div>	
+<!-- 		<form class="add-todo" ng-submit="todosCtrl.addTodo()">
+			<input class="text-box" type="text" placeholder="I need to..." ng-model="todosCtrl.text">
+		</form>	 -->
 
-	<div "nameInput">
-		<input type="text" 
-			ng-model="mainCtrl.whatever.name1"
-			ng-show="mainCtrl.whatever.showName1" 
-			placeholder="Enter your name"
-		>
-		<input type="button" 
-			ng-click="mainCtrl.nameChange1()" 
-			ng-show="mainCtrl.whatever.showName1"
-			value="submit"
-		>
-		<br>
-		<input type="text" 
-			ng-model="mainCtrl.whatever.name2" 
-			ng-show="mainCtrl.whatever.showName2"
-			placeholder="Enter your name"
-		>
-		<input type="button" 
-			ng-click="mainCtrl.nameChange2()" 
-			ng-show="mainCtrl.whatever.showName2"
-			value="submit"
-		>
-		<!-- buttons that allows you to open the two inputs for two names again -->
-		<input type="button" 
-			ng-click="mainCtrl.nameChange1()" 
-			ng-show="mainCtrl.whatever.showName1" 
-			value="change-name-1"
-		>
-		<input type="button" 
-			ng-click="mainCtrl.nameChange2()" 
-			ng-show="mainCtrl.whatever.showName2"
-			value="change-name-2"
-		>					
-	</div>
+			<div "nameInput">
+				<form class="test" ng-submit="mainCtrl.nameChange1()" ng-show="mainCtrl.whatever.showName1">
+					<input type="text" 
+						ng-model="mainCtrl.whatever.name1"
+						ng-show="mainCtrl.whatever.showName1" 
+						placeholder="Enter your name Player 1"
+					>
+				</form>
 
+				<br>
+
+				<form class="test" ng-submit="mainCtrl.nameChange2()" ng-show="mainCtrl.whatever.showName2">
+					<input type="text" 
+						ng-model="mainCtrl.whatever.name2"
+						ng-show="mainCtrl.whatever.showName2" 
+						placeholder="Enter your name Player 2"
+					>
+				</form>				
+
+				<br>
+				<!-- buttons that allows you to open the two inputs for two names again -->
+				<input type="button" 
+					class = "changeName" 
+					ng-click="mainCtrl.name1Again()" 
+					ng-show="mainCtrl.whatever.change1Again" 
+					value="change name 1"
+				>
+				<br>
+				<input type="button"
+					class = "changeName" 
+					ng-click="mainCtrl.name2Again()" 
+					ng-show="mainCtrl.whatever.change2Again"
+					value="change name 2"
+				>					
+			</div>
+			<!-- clear your board -->
+			<input class ="clear-board-button" 
+				type="button" 
+				ng-click="mainCtrl.clearBoard()" 
+				value="Clear Board"
+			>			
+		</div>
 		<!-- contains cells and make them 3x3 grid -->
 		<div class="wrapper">
 
@@ -86,13 +98,6 @@
 			</div>
 
 		</div>
-
-
-		<input class ="clear-board-button" 
-			type="button" 
-			ng-click="mainCtrl.clearBoard()" 
-			value="Clear Board"
-		>
 
 	</body>
 </html>

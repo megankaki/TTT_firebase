@@ -12,6 +12,8 @@ angular
 			self.winner = winner;
 			self.nameChange1 = nameChange1;
 			self.nameChange2 = nameChange2;
+    		self.name1Again = name1Again;
+    		self.name2Again = name2Again;			
 			self.clearBoard = clearBoard;
 
 		//hooks firebase to code. one time only.
@@ -37,6 +39,9 @@ angular
         		self.whatever.showName1 = true;
         		self.whatever.showName2 = true;
         		self.whatever.showWinner = false; 
+        		self.whatever.change1Again = false;
+        		self.whatever.change2Again = false;
+
 	    		//each object stored in array called 'gridList'
 		        self.whatever.gridList = [
 					{
@@ -74,13 +79,26 @@ angular
 	
 		    function nameChange1() {
 	            self.whatever.showName1 = !self.whatever.showName1;
+	            self.whatever.change1Again = !self.whatever.change1Again;
 	            self.whatever.$save();
         	}
 		    
 		    function nameChange2() {
 	            self.whatever.showName2 = !self.whatever.showName2;
+	            self.whatever.change2Again = !self.whatever.change2Again;
 	            self.whatever.$save();
         	}
+
+		    function name1Again() {
+	            self.whatever.change1Again = !self.whatever.change1Again;
+	            self.whatever.showName1 = !self.whatever.showName1;
+	            self.whatever.$save();
+        	}
+		    function name2Again() {
+	            self.whatever.change2Again = !self.whatever.change2Again;
+	            self.whatever.showName2 = !self.whatever.showName2;
+	            self.whatever.$save();
+        	}        	        	
 
 		//function that inputs "x" or "o", changes turn, updates firebase
 		//...make sure that double click does not work. even number view-> only player1
