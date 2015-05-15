@@ -13,6 +13,8 @@
 	float: left;
 
 }
-.empty {
-	background-color: red;
+.clear-board-button {
+	width: 100px;
+	height: 50px;
+	border: solid black 1px;
 }
