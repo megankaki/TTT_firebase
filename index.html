@@ -7,6 +7,7 @@
 		
 		<!-- Stylesheet -->
 		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link href='http://fonts.googleapis.com/css?family=Playfair+Display:700' rel='stylesheet' type='text/css'>
 		
 		<!-- Javascript: angular, firebase, angularfire -->
 		<script src="js/angular.js"></script>
@@ -23,8 +24,8 @@
 	<body ng-controller="TTTController as mainCtrl">
 		<div class="gameData">
 			<h1 class="playerName">
-				<span ng-bind = "mainCtrl.whatever.name1"></span> VS 
-				<span ng-bind = "mainCtrl.whatever.name2"></span>
+				<span id="player1name" ng-bind= "mainCtrl.whatever.name1"></span> <span id="vs">VS</span> 
+				<span id="player2name" ng-bind= "mainCtrl.whatever.name2"></span>
 			</h1>
 		
 			<h2 class="score">
@@ -36,17 +37,12 @@
 				<h2 ng-bind = "mainCtrl.whatever.winner"></h2>
 			</div>	
 
-
-<!-- 		<form class="add-todo" ng-submit="todosCtrl.addTodo()">
-			<input class="text-box" type="text" placeholder="I need to..." ng-model="todosCtrl.text">
-		</form>	 -->
-
 			<div "nameInput">
 				<form class="test" ng-submit="mainCtrl.nameChange1()" ng-show="mainCtrl.whatever.showName1">
 					<input type="text" 
 						ng-model="mainCtrl.whatever.name1"
 						ng-show="mainCtrl.whatever.showName1" 
-						placeholder="Enter your name Player 1"
+						placeholder="Enter name Player 1"
 					>
 				</form>
 
@@ -56,7 +52,7 @@
 					<input type="text" 
 						ng-model="mainCtrl.whatever.name2"
 						ng-show="mainCtrl.whatever.showName2" 
-						placeholder="Enter your name Player 2"
+						placeholder="Enter name Player 2"
 					>
 				</form>				
 
@@ -81,7 +77,12 @@
 				type="button" 
 				ng-click="mainCtrl.clearBoard()" 
 				value="Clear Board"
-			>			
+			>
+			<input class ="clear-board-button" 
+				type="button" 
+				ng-click="mainCtrl.newGame()" 
+				value="New Game"
+			>						
 		</div>
 		<!-- contains cells and make them 3x3 grid -->
 		<div class="wrapper">

@@ -15,6 +15,10 @@ angular
     		self.name1Again = name1Again;
     		self.name2Again = name2Again;			
 			self.clearBoard = clearBoard;
+			self.winner_found = false;
+    		self.player1Present = false;
+    		self.player2Present = false;
+
 
 		//hooks firebase to code. one time only.
 		function whatever() {
@@ -30,14 +34,14 @@ angular
 
 	    	function() {
 	    		
-		        self.whatever.counter = 1;
+		        self.whatever.counter = 0;
 		        self.whatever.p1score = 0;
 		        self.whatever.p2score = 0;
 		        self.whatever.name1 = "Player 1"
 		        self.whatever.name2 = "Player 2" 	 
 		        self.whatever.winner = "Who will be the winner?";
         		self.whatever.showName1 = true;
-        		self.whatever.showName2 = true;
+        		self.whatever.showName2 = false;
         		self.whatever.showWinner = false; 
         		self.whatever.change1Again = false;
         		self.whatever.change2Again = false;
@@ -72,18 +76,24 @@ angular
 		                value: "" 
 		            }
 				];
-            
+            	console.log(self.player1Present);
+            	console.log(self.player2Present);
 		        self.whatever.$save();
         	}
         );
 	
 		    function nameChange1() {
+		    	self.player1Present = true;
+		    	// console.log(self.player1Present)
 	            self.whatever.showName1 = !self.whatever.showName1;
+	            self.whatever.showName2 = !self.whatever.showName2
 	            self.whatever.change1Again = !self.whatever.change1Again;
 	            self.whatever.$save();
         	}
 		    
 		    function nameChange2() {
+		    	self.player2Present = true;
+		    	console.log(self.player2Present)
 	            self.whatever.showName2 = !self.whatever.showName2;
 	            self.whatever.change2Again = !self.whatever.change2Again;
 	            self.whatever.$save();
@@ -104,19 +114,23 @@ angular
 		//...make sure that double click does not work. even number view-> only player1
 	    	function changeValue($index) {                 
 	            if (
-	                self.whatever.counter % 2 !== 0  
+	            	self.player1Present == true &&
+	                self.whatever.counter % 2 == 0  
 	                && self.whatever.gridList[$index].value == ""
 	            ) {
-	                console.log(self.whatever.gridList[$index])
+	                // console.log(self.whatever.gridList[$index])
 	                self.whatever.counter++;
+	                // self.player1Present = !self.player1Present;
 	                self.whatever.gridList[$index].value = "x";
 	            } 
 	            else if (
-	                self.whatever.counter % 2 == 0 
+	            	self.player2Present == true &&
+	                self.whatever.counter % 2 !== 0 
 	                && self.whatever.gridList[$index].value == ""
 	            ) {
-	                console.log(self.whatever.gridList[$index])
+	                // console.log(self.whatever.gridList[$index])
 	                self.whatever.counter++;
+	                // self.player2Present = !self.player2Present; 
 	                self.whatever.gridList[$index].value = "o";
 	            }
 				self.winner();
@@ -124,7 +138,7 @@ angular
 	        }	
 	   	//function that runs win logic
 	   		function winner() {
-				console.log("winner function is running")
+				// console.log("winner function is running")
 				var tokens = ["x", "o"];
 				for (var i = 0; i < tokens.length; i++){
 					var t = tokens[i];
@@ -140,26 +154,29 @@ angular
 						((self.whatever.gridList[2].value == t) && (self.whatever.gridList[4].value == t) && (self.whatever.gridList[6]).value == t) )  {
 
 						if (t == "x"){
-							console.log("Player 1 Wins!");
+							// console.log("Player 1 Wins!");
 							self.whatever.p1score++;
 							self.whatever.winner = self.whatever.name1 + " wins";
 
-						} else {
-							console.log("Player 2 Wins!");
+						} 
+						else {
+							// console.log("Player 2 Wins!");
 							self.whatever.p2score++;
 							self.whatever.winner = self.whatever.name2 + " wins";
 						}
 						self.whatever.showWinner = true;
+						self.winner_found = true;
 						self.whatever.$save();
 						self.delayClearBoard();
-					}
+					} 
+					else if (self.whatever.counter == 9 && !self.winner_found){
+						self.whatever.winner = "It's a tie! No one wins";
+						self.whatever.showWinner = true;
+						self.delayClearBoard();
+					}					
 				}
 
-				if (self.whatever.counter == 9){
-					self.whatever.winner = "It's a tie! No one wins";
-					self.whatever.showWinner = true;
-					self.delayClearBoard();
-				}
+
 			}
 
 			function clearBoard() {
@@ -195,17 +212,33 @@ angular
 				];
 		        self.whatever.counter = 0; 
 		    	self.whatever.winner = "Who'll win next?";
-        		self.whatever.showWinner = false;	        		             
+        		self.whatever.showWinner = false;	
+        		self.winner_found = false;        		             
 		        self.whatever.$save();
         	}
 
 
 			self.delayClearBoard = delayClearBoard;
-
+			self.newGame = newGame;
 			function delayClearBoard() {
 				setTimeout(function(){
 					self.clearBoard()
 				}, 2000)
+			}
+			function newGame() {
+				self.clearBoard();
+				self.whatever.counter = 0;
+				self.whatever.p1score = 0;
+				self.whatever.p2score = 0;
+				self.whatever.showName1 = true;
+				self.whatever.showName2 = false;
+				self.whatever.name1 = "Player 1"
+				self.whatever.name2 = "Player 2"
+		        self.whatever.winner = "Who will be the winner?";				
+				self.whatever.$save();
+				self.player1Present = false;
+    			self.player2Present = false;
+
 			}
 
 

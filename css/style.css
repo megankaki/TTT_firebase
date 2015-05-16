@@ -1,20 +1,42 @@
+body {
+	background-color: black;
+	color: grey;
+}
+
 .wrapper {
-	width: 336px;
-	height: 336px;
+	width: 460px;
+	height: 460px;
 	border: solid black 1px;
 	margin: 0 auto;
 }
 
+#player1name {
+	color: red;
+	font-family: 'Cinzel', serif;
+}
+
+#vs {
+	font-size: 13pt;
+}
+
+#player2name {
+	color: green;
+}
+
 .board {
-	width: 110px;
-	height: 110px;
+	width: 150px;
+	height: 150px;
 	border: solid black 1px;
 	background-color: white;
 	float: left;
 }
 
+.board {
+	background-color: grey;
+}
+
 .board:hover {
-	background-color: red;
+	background-color: white;
 }
 
 .clear-board-button {
@@ -36,9 +58,13 @@
 
 .x {
 	background-image: url(images/mole.png);
+	background-repeat: no-repeat;
+	background-position: center;
 }
 .o {
 	background-image: url(images/hammer.png);
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 .gameData {
