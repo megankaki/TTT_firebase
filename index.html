@@ -38,55 +38,65 @@
 			</div>	
 
 			<div "nameInput">
-				<form class="test" ng-submit="mainCtrl.nameChange1()" ng-show="mainCtrl.whatever.showName1">
+				<form class="nameInputForm" ng-submit="mainCtrl.nameChange1()" ng-show="mainCtrl.whatever.showName1">
 					<input type="text" 
+						class = "textBox"
 						ng-model="mainCtrl.whatever.name1"
 						ng-show="mainCtrl.whatever.showName1" 
-						placeholder="Enter name Player 1"
+						placeholder="Enter name to begin"
 					>
+					<input type="submit" class="test" value="submit" ng-show="mainCtrl.whatever.showName1">
 				</form>
 
 				<br>
 
-				<form class="test" ng-submit="mainCtrl.nameChange2()" ng-show="mainCtrl.whatever.showName2">
-					<input type="text" 
+				<form class="nameInputForm" ng-submit="mainCtrl.nameChange2()" ng-show="mainCtrl.whatever.showName2">
+					<input type="text"
+						class = "textBox"
 						ng-model="mainCtrl.whatever.name2"
 						ng-show="mainCtrl.whatever.showName2" 
-						placeholder="Enter name Player 2"
+						placeholder="Enter name to begin"
 					>
+					<input type="submit" class="test" value="submit" ng-show="mainCtrl.whatever.showName2">
 				</form>				
 
 				<br>
-				<!-- buttons that allows you to open the two inputs for two names again -->
-				<input type="button" 
-					class = "changeName" 
-					ng-click="mainCtrl.name1Again()" 
-					ng-show="mainCtrl.whatever.change1Again" 
-					value="change name 1"
-				>
-				<br>
-				<input type="button"
-					class = "changeName" 
-					ng-click="mainCtrl.name2Again()" 
-					ng-show="mainCtrl.whatever.change2Again"
-					value="change name 2"
-				>					
-			</div>
-			<!-- clear your board -->
-			<input class ="clear-board-button" 
-				type="button" 
-				ng-click="mainCtrl.clearBoard()" 
-				value="Clear Board"
-			>
-			<input class ="clear-board-button" 
-				type="button" 
-				ng-click="mainCtrl.newGame()" 
-				value="New Game"
-			>						
+				<!-- buttons that allows you to display the two name inputs again -->
+			</div>					
 		</div>
 		<!-- contains cells and make them 3x3 grid -->
 		<div class="wrapper">
-
+				<div class="buttonWrapper">					
+					<input type="button" 
+						id="changeName1" 
+						class = "buttonStyle" 
+						ng-click="mainCtrl.name1Again()" 
+						ng-show="mainCtrl.whatever.change1Again" 
+						value="change name 1"
+					>
+					
+					<input type="button"
+						class = "buttonStyle" 
+						id="changeName2"
+						ng-click="mainCtrl.name2Again()" 
+						ng-show="mainCtrl.whatever.change2Again"
+						value="change name 2"
+					>
+				
+					<input class ="buttonStyle"
+						id="clearButton" 
+						type="button" 
+						ng-click="mainCtrl.clearBoard()" 
+						value="Clear Board"
+					>
+					<input class ="buttonStyle" 
+						id="newGame" 
+						type="button" 
+						ng-click="mainCtrl.newGame()" 
+						value="New Game"
+					>
+				</div>						
+			
 			<!-- class="board" -> cells displays and performs actions : 
 				ng-repeat -> iterates through the cell 9 times, 
 				ng-click -> pushes the value into firebase,

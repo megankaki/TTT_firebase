@@ -84,7 +84,6 @@ angular
 	
 		    function nameChange1() {
 		    	self.player1Present = true;
-		    	// console.log(self.player1Present)
 	            self.whatever.showName1 = !self.whatever.showName1;
 	            self.whatever.showName2 = !self.whatever.showName2
 	            self.whatever.change1Again = !self.whatever.change1Again;
@@ -93,7 +92,6 @@ angular
 		    
 		    function nameChange2() {
 		    	self.player2Present = true;
-		    	console.log(self.player2Present)
 	            self.whatever.showName2 = !self.whatever.showName2;
 	            self.whatever.change2Again = !self.whatever.change2Again;
 	            self.whatever.$save();

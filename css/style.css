@@ -4,8 +4,8 @@ body {
 }
 
 .wrapper {
-	width: 460px;
-	height: 460px;
+	width: 457px;
+	height: 457px;
 	border: solid black 1px;
 	margin: 0 auto;
 }
@@ -39,22 +39,40 @@ body {
 	background-color: white;
 }
 
-.clear-board-button {
-	width: 80px;
-	height: 30px;
-	border: solid black 1px;
-}
-
-.input {
-	width: 200px;
-	height: 50px;
-}
-
-.changeName {
-	width: 100px;
+.buttonStyle {
+	width: 111px;
 	height: 20px;
 	border: solid black 1px;
+	margin: 5px 0px;
 }
+
+.test {
+	background-color: grey;
+	width: 55px;
+	height: 25px;
+	text-align: center;
+	display: inline-block;
+}
+
+.buttonWrapper {
+	display: inline-block;
+	text-align: center;
+	width: 457px;
+}
+
+#clearButton #changeName2 {
+	float: left;
+}
+#newGame #changeName1 {
+	float: right;
+}
+
+.textBox {
+	width: 170px;
+	height: 18px;
+}
+
+
 
 .x {
 	background-image: url(images/mole.png);
