@@ -1,12 +1,14 @@
 body {
-	background-color: black;
+	background: url("http://www.themesltd.com/backgrounds/random/black_lego.png") ;
 	color: grey;
 }
-
+/*http://p1.pichost.me/i/32/1555893.jpg*/
+/*http://www.twinfinite.net/wp-content/uploads/2015/03/Lego.jpg*/
+/*http://p1.pichost.me/i/32/1555893.jpg*/
+/*http://cdn.scrapbook.com/products/source/SBC_ci-24647.jpg*/
 .wrapper {
 	width: 457px;
 	height: 457px;
-	border: solid black 1px;
 	margin: 0 auto;
 }
 
@@ -20,30 +22,27 @@ body {
 }
 
 #player2name {
-	color: green;
+	color: yellow;
 }
 
 .board {
 	width: 150px;
 	height: 150px;
 	border: solid black 1px;
-	background-color: white;
+	/*background: url("http://cdn.scrapbook.com/products/source/SBC_ci-24647.jpg");*/
 	float: left;
 }
 
-.board {
-	background-color: grey;
-}
-
 .board:hover {
-	background-color: white;
+	opacity: 0.9;
 }
 
 .buttonStyle {
 	width: 111px;
 	height: 20px;
-	border: solid black 1px;
+	border: solid black 2px;
 	margin: 5px 0px;
+	background-color: grey;
 }
 
 .test {
@@ -57,32 +56,37 @@ body {
 .buttonWrapper {
 	display: inline-block;
 	text-align: center;
-	width: 457px;
+	width: 456px;
 }
 
 #clearButton #changeName2 {
+	background-color: grey;
 	float: left;
 }
 #newGame #changeName1 {
+	background-color: grey;
 	float: right;
 }
 
 .textBox {
 	width: 170px;
 	height: 18px;
+	background-color: grey;
 }
 
 
 
 .x {
-	background-image: url(images/mole.png);
+	background-image: url(http://images.kaneva.com/filestore7/4032126/5011972/redULegoU10X10_ad.jpg);
 	background-repeat: no-repeat;
 	background-position: center;
+	background-size: cover;
 }
 .o {
-	background-image: url(images/hammer.png);
+	background-image: url(http://www.x-brick.de/other/iphone/iphone5_base10_yellow.jpg);
 	background-repeat: no-repeat;
 	background-position: center;
+	background-size: cover;
 }
 
 .gameData {

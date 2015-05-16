@@ -37,8 +37,8 @@ angular
 		        self.whatever.counter = 0;
 		        self.whatever.p1score = 0;
 		        self.whatever.p2score = 0;
-		        self.whatever.name1 = "Player 1"
-		        self.whatever.name2 = "Player 2" 	 
+		        self.whatever.name1 = "Red Lego"
+		        self.whatever.name2 = "Yellow Lego" 	 
 		        self.whatever.winner = "Who will be the winner?";
         		self.whatever.showName1 = true;
         		self.whatever.showName2 = false;
@@ -230,8 +230,8 @@ angular
 				self.whatever.p2score = 0;
 				self.whatever.showName1 = true;
 				self.whatever.showName2 = false;
-				self.whatever.name1 = "Player 1"
-				self.whatever.name2 = "Player 2"
+				self.whatever.name1 = "Red Lego"
+				self.whatever.name2 = "Yellow Lego"
 		        self.whatever.winner = "Who will be the winner?";				
 				self.whatever.$save();
 				self.player1Present = false;
