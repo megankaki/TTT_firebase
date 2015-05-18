@@ -238,6 +238,64 @@ angular
     			self.player2Present = false;
 
 			}
+/////sound related items below
+	// self.stopAudio = stopAudio;
+	// function stopAudio() {
+	//     clearInterval(self.loop);
+	// }
+
+	self.loop = setInterval(function(){audioLoop()},1000);
+	self.audioLoop = audioLoop;
+
+	function audioLoop(){
+	
+		var sound0 = new Audio('js/Audio/Base1.mp3'); 
+		var sound1 = new Audio('js/Audio/Base2.mp3'); 
+		var sound2 = new Audio('js/Audio/ComicalDripSound.mp3'); 
+		var sound3 = new Audio('js/Audio/DramaticKiss2.mp3'); 
+		var sound4 = new Audio('js/Audio/PhotonShot.mp3'); 
+		var sound5 = new Audio('js/Audio/SodaCanOpen.mp3'); 
+		var sound6 = new Audio('js/Audio/Base1.mp3'); 
+		var sound7 = new Audio('js/Audio/Base2.mp3');
+		var sound8 = new Audio('js/Audio/ComicalDripSound.mp3'); 
+		var sound9 = new Audio('js/Audio/DramaticKiss2.mp3'); 
+		var sound10 = new Audio('js/Audio/PhotonShot.mp3'); 
+		var sound11 = new Audio('js/Audio/SodaCanOpen.mp3'); 
+		var sound12 = new Audio('js/Audio/Base1.mp3');
+		var sound13 = new Audio('js/Audio/Base2.mp3'); 
+		var sound14 = new Audio('js/Audio/ComicalDripSound.mp3'); 
+		var sound15 = new Audio('js/Audio/DramaticKiss2.mp3'); 
+		var sound16 = new Audio('js/Audio/PhotonShot.mp3'); 
+		var sound17 = new Audio('js/Audio/SodaCanOpen.mp3');  
+
+		self.soundArrayX=[sound0,sound1,sound2,sound3,sound4,sound5,sound6,sound7,sound8];
+		self.soundArrayO=[sound9,sound10,sound11,sound12,sound13,sound14,sound15,sound16,sound17];		
+
+		for (var i=0; i<self.whatever.gridList.length; i+=1) {
+
+			if (self.whatever.gridList[i].value == "x"){
+				self.soundArrayX[i].play()
+				break;
+			}
+			if (self.whatever.gridList[i].value == "o"){
+				self.soundArrayO[i].play()
+				break;
+			}
+		}
+
+		  setTimeout(function(){
+			for (var i=1; i<self.whatever.gridList.length; i+=1){
+				if (self.whatever.gridList[i].value == "x"){
+					self.soundArrayX[i].play()
+					break;
+				}
+				if (self.whatever.gridList[i].value == "o"){
+					self.soundArrayO[i].play()
+					break;
+				}				
+			}
+		  }, 1000); 
+	}//end of audioloop
 
 
-}
+}//end of controller 
