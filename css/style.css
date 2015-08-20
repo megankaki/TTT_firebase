@@ -1,20 +1,100 @@
+body {
+	background: url("http://www.themesltd.com/backgrounds/random/black_lego.png") ;
+	color: grey;
+}
+/*http://p1.pichost.me/i/32/1555893.jpg*/
+/*http://www.twinfinite.net/wp-content/uploads/2015/03/Lego.jpg*/
+/*http://p1.pichost.me/i/32/1555893.jpg*/
+/*http://cdn.scrapbook.com/products/source/SBC_ci-24647.jpg*/
 .wrapper {
-	width: 336px;
-	height: 336px;
-	border: solid black 1px;
+	width: 457px;
+	height: 457px;
 	margin: 0 auto;
 }
 
-.board {
-	width: 110px;
-	height: 110px;
-	border: solid black 1px;
-	background-color: white;
-	float: left;
-
+#player1name {
+	color: red;
+	font-family: 'Cinzel', serif;
 }
+
+#vs {
+	font-size: 13pt;
+}
+
+#player2name {
+	color: yellow;
+}
+
+.board {
+	width: 150px;
+	height: 150px;
+	border: solid black 1px;
+	/*background: url("http://cdn.scrapbook.com/products/source/SBC_ci-24647.jpg");*/
+	float: left;
+}
+
+.board:hover {
+	opacity: 0.5;
+}
+
+.buttonStyle {
+	width: 111px;
+	height: 20px;
+	border: solid black 2px;
+	margin: 5px 0px;
+	background-color: grey;
+}
+<<<<<<< HEAD
 .clear-board-button {
 	width: 100px;
 	height: 50px;
 	border: solid black 1px;
+=======
+
+.test {
+	background-color: grey;
+	width: 55px;
+	height: 25px;
+	text-align: center;
+	display: inline-block;
+}
+
+.buttonWrapper {
+	display: inline-block;
+	text-align: center;
+	width: 456px;
+}
+
+#clearButton #changeName2 {
+	background-color: grey;
+	float: left;
+}
+#newGame #changeName1 {
+	background-color: grey;
+	float: right;
+}
+
+.textBox {
+	width: 170px;
+	height: 18px;
+	background-color: grey;
+}
+
+
+
+.x {
+	background-image: url(http://images.kaneva.com/filestore7/4032126/5011972/redULegoU10X10_ad.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+.o {
+	background-image: url(http://www.x-brick.de/other/iphone/iphone5_base10_yellow.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+.gameData {
+	text-align: center;
 }

@@ -7,6 +7,7 @@
 		
 		<!-- Stylesheet -->
 		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link href='https://fonts.googleapis.com/css?family=Playfair+Display:700' rel='stylesheet' type='text/css'>
 		
 		<!-- Javascript: angular, firebase, angularfire -->
 		<script src="js/angular.js"></script>
@@ -21,50 +22,86 @@
 
 	<!-- bootstrap controller to body tag, create alias as mainCtrl-->
 	<body ng-controller="TTTController as mainCtrl">
+		<div class="gameData">
+			<h1 class="playerName">
+				<span id="player1name" ng-bind= "mainCtrl.whatever.name1"></span> <span id="vs">VS</span> 
+				<span id="player2name" ng-bind= "mainCtrl.whatever.name2"></span>
+			</h1>
+		
+			<h2 class="score">
+				<span ng-bind = "mainCtrl.whatever.p1score"></span> : 
+				<span ng-bind = "mainCtrl.whatever.p2score"></span>
+			</h2>
 
-	<h1 class="playerName">
-		<span ng-bind = "mainCtrl.whatever.name1"></span> VS 
-		<span ng-bind = "mainCtrl.whatever.name2"></span>
-	</h1>
+			<div "winnerDispaly">
+				<h2 ng-bind = "mainCtrl.whatever.winner"></h2>
+			</div>	
 
-	<h2 class="score">
-		<span ng-bind = "mainCtrl.whatever.p1score"></span> : 
-		<span ng-bind = "mainCtrl.whatever.p2score"></span>
-	</h2>
+			<div "nameInput">
+				<form class="nameInputForm" ng-submit="mainCtrl.nameChange1()" ng-show="mainCtrl.whatever.showName1">
+					<input type="text" 
+						class = "textBox"
+						ng-model="mainCtrl.whatever.name1"
+						ng-show="mainCtrl.whatever.showName1" 
+						placeholder="Enter name to begin"
+					>
+					<input type="submit" class="test" value="submit" ng-show="mainCtrl.whatever.showName1">
+				</form>
 
-	<div "winnerDispaly">
-		<h2 ng-bind = "mainCtrl.whatever.winner"></h2>
-	</div>	
+				<br>
 
-	<div "nameInput">
-		<input type="text" 
-			ng-model="mainCtrl.whatever.name1"
-			ng-show="mainCtrl.whatever.showName" 
-			placeholder="Enter your name"
-		>
-		<input type="text" 
-			ng-model="mainCtrl.whatever.name2" 
-			ng-show="mainCtrl.whatever.showName"
-			placeholder="Enter your name"
-		>
-		<input type="button" 
-			ng-click="mainCtrl.nameChange()" 
-			ng-show="mainCtrl.whatever.showName"
-			value="submit"
-		>
-	</div>
+				<form class="nameInputForm" ng-submit="mainCtrl.nameChange2()" ng-show="mainCtrl.whatever.showName2">
+					<input type="text"
+						class = "textBox"
+						ng-model="mainCtrl.whatever.name2"
+						ng-show="mainCtrl.whatever.showName2" 
+						placeholder="Enter name to begin"
+					>
+					<input type="submit" class="test" value="submit" ng-show="mainCtrl.whatever.showName2">
+				</form>				
+				<br>
+				
+			</div>					
+		</div>
 
 		<!-- contains cells and make them 3x3 grid -->
 		<div class="wrapper">
 
-			<!-- class="board" -> cells displays and performs actions : 
-				ng-repeat -> iterates through the cell 9 times, 
-				ng-click -> pushes the value into firebase,
-				ng-bind -> retrieves value in firebase to display on viewer-->			
+				<!-- buttons that allows you to display the two name inputs again -->
+				<div class="buttonWrapper">					
+					<input type="button" 
+						id="changeName1" 
+						class = "buttonStyle" 
+						ng-click="mainCtrl.name1Again()" 
+						ng-show="mainCtrl.whatever.change1Again" 
+						value="change name 1"
+					>
+					
+					<input type="button"
+						class = "buttonStyle" 
+						id="changeName2"
+						ng-click="mainCtrl.name2Again()" 
+						ng-show="mainCtrl.whatever.change2Again"
+						value="change name 2"
+					>
+				
+					<input class ="buttonStyle"
+						id="clearButton" 
+						type="button" 
+						ng-click="mainCtrl.clearBoard()" 
+						value="Clear Board"
+					>
+					<input class ="buttonStyle" 
+						id="newGame" 
+						type="button" 
+						ng-click="mainCtrl.newGame()" 
+						value="New Game"
+					>
+				</div>						
 			<div class="board" 
 				ng-repeat="square in mainCtrl.whatever.gridList track by $index" 
 				ng-click="mainCtrl.changeValue($index)" 
-				ng-bind="square.value"
+				ng-class="square.value"
 			>
 			</div>
 
@@ -79,4 +116,3 @@
 
 	</body>
 </html>
-

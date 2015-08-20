@@ -1,0 +1,9 @@
+{
+  "firebase": "tic-tac-toe-mk",
+  "public": "/Users/megankaki/workspace/TTT_firebase",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
