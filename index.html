@@ -97,11 +97,6 @@
 						value="New Game"
 					>
 				</div>						
-
-			<!-- class="board" -> cells displays and performs actions : 
-				ng-repeat -> iterates through the cell 9 times, 
-				ng-click -> pushes the value into firebase,
-				ng-bind -> retrieves value in firebase to display on viewer-->			
 			<div class="board" 
 				ng-repeat="square in mainCtrl.whatever.gridList track by $index" 
 				ng-click="mainCtrl.changeValue($index)" 
