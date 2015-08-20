@@ -45,6 +45,7 @@ angular
         		self.whatever.showWinner = false; 
         		self.whatever.change1Again = false;
         		self.whatever.change2Again = false;
+        		self.whatever.winnerPresent = false;
 
 	    		//each object stored in array called 'gridList'
 		        self.whatever.gridList = [
@@ -110,29 +111,31 @@ angular
 
 		//function that inputs "x" or "o", changes turn, updates firebase
 		//...make sure that double click does not work. even number view-> only player1
-	    	function changeValue($index) {                 
-	            if (
-	            	self.player1Present == true &&
-	                self.whatever.counter % 2 == 0  
-	                && self.whatever.gridList[$index].value == ""
-	            ) {
-	                // console.log(self.whatever.gridList[$index])
-	                self.whatever.counter++;
-	                // self.player1Present = !self.player1Present;
-	                self.whatever.gridList[$index].value = "x";
-	            } 
-	            else if (
-	            	self.player2Present == true &&
-	                self.whatever.counter % 2 !== 0 
-	                && self.whatever.gridList[$index].value == ""
-	            ) {
-	                // console.log(self.whatever.gridList[$index])
-	                self.whatever.counter++;
-	                // self.player2Present = !self.player2Present; 
-	                self.whatever.gridList[$index].value = "o";
-	            }
-				self.winner();
-	            self.whatever.$save();
+	    	function changeValue($index) {    
+	    	    if (self.whatever.winnerPresent == false) {         
+		            if (
+		            	self.player1Present == true &&
+		                self.whatever.counter % 2 == 0  
+		                && self.whatever.gridList[$index].value == ""
+		            ) {
+		                // console.log(self.whatever.gridList[$index])
+		                self.whatever.counter++;
+		                // self.player1Present = !self.player1Present;
+		                self.whatever.gridList[$index].value = "x";
+		            } 
+		            else if (
+		            	self.player2Present == true &&
+		                self.whatever.counter % 2 !== 0 
+		                && self.whatever.gridList[$index].value == ""
+		            ) {
+		                // console.log(self.whatever.gridList[$index])
+		                self.whatever.counter++;
+		                // self.player2Present = !self.player2Present; 
+		                self.whatever.gridList[$index].value = "o";
+		            }
+					self.winner();
+		            self.whatever.$save();
+		        }
 	        }	
 	   	//function that runs win logic
 	   		function winner() {
@@ -164,12 +167,14 @@ angular
 						}
 						self.whatever.showWinner = true;
 						self.winner_found = true;
+						self.whatever.winnerPresent = true;
 						self.whatever.$save();
 						self.delayClearBoard();
 					} 
 					else if (self.whatever.counter == 9 && !self.winner_found){
 						self.whatever.winner = "It's a tie! No one wins";
 						self.whatever.showWinner = true;
+
 						self.delayClearBoard();
 					}					
 				}
@@ -211,7 +216,8 @@ angular
 		        self.whatever.counter = 0; 
 		    	self.whatever.winner = "Who'll win next?";
         		self.whatever.showWinner = false;	
-        		self.winner_found = false;        		             
+        		self.winner_found = false;
+        		self.whatever.winnerPresent = false;        		             
 		        self.whatever.$save();
         	}
 
